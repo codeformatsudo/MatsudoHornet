@@ -2,6 +2,9 @@ Date.prototype.format = function (mask, utc) {
     return dateFormat(this, mask, utc);
 };
 
+
+
+
 // Attibution: SODA API requests based on this example: https://github.com/chriswhong/soda-leaflet
 
 L.TimeDimension.Layer.SODAHeatMap = L.TimeDimension.Layer.extend({
@@ -118,9 +121,34 @@ L.timeDimension.layer.sodaHeatMap = function(options) {
 var currentTime = new Date();
 currentTime.setUTCDate(1, 0, 0, 0, 0);
 
+// スマホ判定
+var _ua = (function(u){
+  return {
+    Tablet:(u.indexOf("windows") != -1 && u.indexOf("touch") != -1 && u.indexOf("tablet pc") == -1) 
+      || u.indexOf("ipad") != -1
+      || (u.indexOf("android") != -1 && u.indexOf("mobile") == -1)
+      || (u.indexOf("firefox") != -1 && u.indexOf("tablet") != -1)
+      || u.indexOf("kindle") != -1
+      || u.indexOf("silk") != -1
+      || u.indexOf("playbook") != -1,
+    Mobile:(u.indexOf("windows") != -1 && u.indexOf("phone") != -1)
+      || u.indexOf("iphone") != -1
+      || u.indexOf("ipod") != -1
+      || (u.indexOf("android") != -1 && u.indexOf("mobile") != -1)
+      || (u.indexOf("firefox") != -1 && u.indexOf("mobile") != -1)
+      || u.indexOf("blackberry") != -1
+  }
+})(window.navigator.userAgent.toLowerCase());
+
+// 最大化ボタンはスマホの場合は非表示（iPhoneで画面が真っ白になる）
+var displayFullScreenCntl = true;
+if(_ua.Mobile){
+    displayFullScreenCntl = false;
+}
+
 var map = L.map('map', {
     zoom: 12.5,
-    fullscreenControl: true,
+    fullscreenControl: displayFullScreenCntl,
     //dragging: false, // マウスドラッグによるパン操作を不可
     touchZoom: false, // タッチによるズーム操作を不可
     scrollWheelZoom: false, // スクロールによるズーム操作を不可
