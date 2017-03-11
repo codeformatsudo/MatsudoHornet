@@ -8,7 +8,6 @@ html *{
     max-width: 970px;
 }
 #header{
-    background-image: url(../img/logo-leaflettimedimension.png);
     background-position: top right;
     background-repeat: no-repeat;
     padding-bottom: 20px;
