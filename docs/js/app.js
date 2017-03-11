@@ -2,9 +2,6 @@ Date.prototype.format = function (mask, utc) {
     return dateFormat(this, mask, utc);
 };
 
-
-
-
 // Attibution: SODA API requests based on this example: https://github.com/chriswhong/soda-leaflet
 
 L.TimeDimension.Layer.SODAHeatMap = L.TimeDimension.Layer.extend({
@@ -140,10 +137,15 @@ var _ua = (function(u){
   }
 })(window.navigator.userAgent.toLowerCase());
 
-// 最大化ボタンはスマホの場合は非表示（iPhoneで画面が真っ白になる）
+// 最大化ボタンは表示（スマホの場合は非表示）
 var displayFullScreenCntl = true;
+// 中心座標は21世紀公園の西あたり（スマホの場合は上本郷駅あたり）
+var cnterlat = 35.804602;
+var cnterlng = 139.929651;
 if(_ua.Mobile){
     displayFullScreenCntl = false;
+    cnterlat = 35.789481;
+    cnterlng = 139.9138103;
 }
 
 var map = L.map('map', {
@@ -164,7 +166,7 @@ var map = L.map('map', {
         period: "P1M"
         //currentTime: currentTime
     },
-    center: [35.804602, 139.929651], // 松戸中心座標
+    center: [cnterlat, cnterlng], // 松戸中心座標
 });
 
 //var layer = new L.StamenTileLayer("toner-lite");
