@@ -121,7 +121,7 @@ currentTime.setUTCDate(1, 0, 0, 0, 0);
 var map = L.map('map', {
     zoom: 12.5,
     fullscreenControl: true,
-    dragging: false, // マウスドラッグによるパン操作を不可
+    //dragging: false, // マウスドラッグによるパン操作を不可
     touchZoom: false, // タッチによるズーム操作を不可
     scrollWheelZoom: false, // スクロールによるズーム操作を不可
     doubleClickZoom: false, // ダブルクリックによるズーム操作を不可
