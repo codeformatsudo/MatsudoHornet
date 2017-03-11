@@ -127,7 +127,7 @@ var map = L.map('map', {
     doubleClickZoom: false, // ダブルクリックによるズーム操作を不可
     boxZoom: false, // [Shift] + ドラッグによるボックスズーム操作を不可
     tap: false, // タップによるズーム操作を不可
-    keyboard: false, // キーボードによる操作を不可
+    //keyboard: false, // キーボードによる操作を不可
     zoomControl: false, // ズーム コントロールの非表示
     timeDimension: true,    
     timeDimensionOptions: {
